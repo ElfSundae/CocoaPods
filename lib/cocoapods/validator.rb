@@ -1053,6 +1053,7 @@ module Pod
     def xcodebuild(action, scheme, configuration, deployment_target:)
       require 'fourflusher'
       command = %W(clean #{action} -workspace #{File.join(validation_dir, 'App.xcworkspace')} -scheme #{scheme} -configuration #{configuration})
+      command += %w(-usage)
       case consumer.platform_name
       when :osx, :macos
         command += %w(CODE_SIGN_IDENTITY=)
